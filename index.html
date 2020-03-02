@@ -207,7 +207,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-02 16:01:56 / 修改时间：16:22:02" itemprop="dateCreated datePublished" datetime="2020-03-02T16:01:56+08:00">2020-03-02</time>
+              <time title="创建时间：2020-03-02 16:01:56 / 修改时间：16:25:34" itemprop="dateCreated datePublished" datetime="2020-03-02T16:01:56+08:00">2020-03-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,48 +232,14 @@
       
           <h1 id="移动web开发之rem布局"><a href="#移动web开发之rem布局" class="headerlink" title="移动web开发之rem布局"></a>移动web开发之rem布局</h1><h2 id="rem基础"><a href="#rem基础" class="headerlink" title="rem基础"></a>rem基础</h2><h3 id="rem单位"><a href="#rem单位" class="headerlink" title="rem单位"></a>rem单位</h3><p>rem(root em)是一个相对单位，类似em，em是父元素字体大小。</p>
 <p>rem的基准是相对于htnl元素的字体大小。</p>
-<p>比如,根元素(html)设置font-size=12px;非根元素设置width:2rem，则换成px表示24px</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 根html 为 12px *&#x2F;</span><br><span class="line">html &#123;</span><br><span class="line">   font-size: 12px;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 此时 div 的字体大小就是 24px *&#x2F;       </span><br><span class="line">div &#123;</span><br><span class="line">    font-size: 2rem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>rem优势:父元素文字大小可能不一致，但是整个页面只有一个html，</p>
-<p>可以很好控制整个页面的元素大小</p>
-<h2 id="rem适配方案"><a href="#rem适配方案" class="headerlink" title="rem适配方案"></a>rem适配方案</h2><p>1.让一些不能等比自适应的元素，达到适配尺寸发生改变时，等比例适配当前设备。</p>
-<p>2.使用媒体查询根据不同设备按比例设置html的字体大小，然后页面元素使用rem做尺寸单位,当html字体大小变化元素尺寸也会发生拜年话，从而达到等比缩放的适配。</p>
-<p>技术方案:</p>
-<p>1.less+rem+媒体查询</p>
-<p>2.Iflexible.js+rem</p>
-<p>两种方案现在都存在，方案2更简单，无需了解里面的代码。</p>
-<h3 id="rem适配方案1"><a href="#rem适配方案1" class="headerlink" title="rem适配方案1"></a>rem适配方案1</h3><p>①假设设计稿是750px</p>
-<p>②假设我们把整个屏幕划分为15等份（划分标准不一可以是20份也可以是10等份）</p>
-<p>③每一份作为html字体大小，这里就是50px</p>
-<p>④那么在320px设备的时候，字体大小为320/15就是  21.33px</p>
-<p>⑤用我们页面元素的大小除以不同的 html字体大小会发现他们比例还是相同的</p>
-<p>⑥比如我们以750为标准设计稿</p>
-<p>⑦一个100<em>100像素的页面元素在  750屏幕下，  就是 100/ 50  转换为rem  是  2rem</em>2rem  比例是1比1</p>
-<p>⑧320屏幕下，  html字体大小为21.33   则 2rem=  42.66px  此时宽和高都是 42.66  但是宽和高的比例还是 1比1</p>
-<p>⑨但是已经能实现不同屏幕下  页面元素盒子等比例缩放的效果</p>
-<p>总结：</p>
-<p>①最后的公式：页面元素的rem值 =  页面元素值（px） /  （屏幕宽度  /  划分的份数）</p>
-<p>②屏幕宽度/划分的份数就是 htmlfont-size 的大小</p>
-<p>③或者：页面元素的rem值 =  页面元素值（px） /  html font-size 字体大小</p>
-<h3 id="rem-适配方案2"><a href="#rem-适配方案2" class="headerlink" title="rem 适配方案2"></a>rem 适配方案2</h3><p>手机淘宝团队出的简洁高效 移动端适配库</p>
-<p>我们再也不需要在写不同屏幕的媒体查询，因为里面js做了处理</p>
-<p>它的原理是把当前设备划分为10等份，但是不同设备下，比例还是一致的。</p>
-<p>我们要做的，就是确定好我们当前设备的html 文字大小就可以了</p>
-<p>比如当前设计稿是 750px， 那么我们只需要把 html 文字大小设置为 75px(750px / 10) 就可以</p>
-<p>里面页面元素rem值： 页面元素的px 值 /  75  </p>
-<p>剩余的，让flexible.js来去算</p>
-<p>github地址：<a href="https://link.jianshu.com/?t=https://github.com/amfe/lib-flexible" target="_blank" rel="noopener">https://github.com/amfe/lib-flexible</a></p>
-<p>总结：</p>
-<p>因为flexible是默认将屏幕分为10等分</p>
-<p>但是当屏幕大于750的时候希望不要再去重置html字体了</p>
-<p>所以要自己通过媒体查询设置一下</p>
-<p>并且要把权重提到最高</p>
-<p>VSCode  px 转换rem 插件 cssrem </p>
-<p>因为cssrem中css自动转化为rem是参照默认插件的16转换的所以需要自己配置</p>
-<p><img src="http://q6iftddof.bkt.clouddn.com/6.jpg" alt=""></p>
-<p><img src="http://q6iftddof.bkt.clouddn.com/7.jpg" alt=""></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/02/rem%E5%B8%83%E5%B1%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
