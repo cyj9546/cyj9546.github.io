@@ -450,87 +450,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<p><img src="http://yj.paopao.asia/lifecycle.png" alt=""></p>
-<table>
-<thead>
-<tr>
-<th>生命周期函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>beforeCreate</td>
-<td>组件实例刚被创建，组件属性计算之前，如 data属性</td>
-</tr>
-<tr>
-<td>created</td>
-<td>组件实例创建完成，属性已绑定，但DMO还未生产，$el属性还不存在</td>
-</tr>
-<tr>
-<td>beforeMount</td>
-<td>在挂载开始之前被调用：相关的 render 函数首次被调用。该钩子在服务器端渲染期间不被调用。以下周期在服务端渲染期间都不被调用。</td>
-</tr>
-<tr>
-<td>mounted</td>
-<td>模板编译挂载之后</td>
-</tr>
-<tr>
-<td>beforeUpdate</td>
-<td>组件更新前</td>
-</tr>
-<tr>
-<td>updated</td>
-<td>组件更新后</td>
-</tr>
-<tr>
-<td>activated</td>
-<td>keep-alive 组件激活时调用。</td>
-</tr>
-<tr>
-<td>deactivated</td>
-<td>keep-alive 组件停用时调用。</td>
-</tr>
-<tr>
-<td>beforeDestroy</td>
-<td>实例销毁之前调用。</td>
-</tr>
-<tr>
-<td>destroyed</td>
-<td>Vue 实例销毁后调用。</td>
-</tr>
-</tbody></table>
-<ul>
-<li>beforeCreate()<ul>
-<li>应用：可以加loading事件</li>
-</ul>
-</li>
-<li>created()<ul>
-<li>应用：可以在这结束loading，也可以做一些初始化，实现函数自执行</li>
-</ul>
-</li>
-<li>beforeMount()<ul>
-<li>应用：发起ajax请求，拿回数据，配合路由钩子做一些事</li>
-</ul>
-</li>
-<li>mounted()<ul>
-<li>应用：节点操作</li>
-</ul>
-</li>
-<li>beforeUpdate()</li>
-<li>updated()</li>
-<li>beforeDestroy()</li>
-<li>destroyed()<ul>
-<li>应用：清除定时器，延时器，取消ajax请求等</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&#123;&#123;message&#125;&#125;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			let vm &#x3D; new Vue(&#123;</span><br><span class="line">				el:&#39;#app&#39;,</span><br><span class="line">				data:&#123;</span><br><span class="line">					message:&#39;yang&#39;</span><br><span class="line">				&#125;,</span><br><span class="line">				beforeCreate()&#123;</span><br><span class="line">					console.group(&#39;beforeCreate&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el);</span><br><span class="line">					console.log(&#39;data:&#39; + this.$data);</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;beforeCreate&#39;)</span><br><span class="line">				&#125;,</span><br><span class="line">				created()&#123;</span><br><span class="line">					console.group(&#39;created&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el);</span><br><span class="line">					console.log(&#39;data:&#39; + JSON.stringify(this.$data));</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;created&#39;)</span><br><span class="line">				&#125;,</span><br><span class="line">				beforeMount() &#123;</span><br><span class="line">					console.group(&#39;beforeMount&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el.innerHTML);</span><br><span class="line">					console.log(&#39;data:&#39; + JSON.stringify(this.$data));</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;beforeMount&#39;)</span><br><span class="line">				&#125;,</span><br><span class="line">				mounted() &#123;</span><br><span class="line">					console.group(&#39;mounted&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el.innerHTML);</span><br><span class="line">					console.log(&#39;data:&#39; + JSON.stringify(this.$data));</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;mounted&#39;)</span><br><span class="line">				&#125;,</span><br><span class="line">				beforeUpdate() &#123;</span><br><span class="line">					console.group(&#39;beforeUpdate&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el.innerHTML);</span><br><span class="line">					console.log(&#39;data:&#39; + JSON.stringify(this.$data));</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;beforeUpdate&#39;)</span><br><span class="line">				&#125;,</span><br><span class="line">				updated() &#123;</span><br><span class="line">					console.group(&#39;updated&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el.innerHTML);</span><br><span class="line">					console.log(&#39;data:&#39; + JSON.stringify(this.$data));</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;updated&#39;)</span><br><span class="line">				&#125;,</span><br><span class="line">				beforeDestroy() &#123;</span><br><span class="line">					console.group(&#39;beforeDestroy&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el.innerHTML);</span><br><span class="line">					console.log(&#39;data:&#39; + JSON.stringify(this.$data));</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;beforeDestroy&#39;)</span><br><span class="line">				&#125;,</span><br><span class="line">				destroyed() &#123;</span><br><span class="line">					console.group(&#39;destroyed&#39;)</span><br><span class="line">					console.log(&#39;el :&#39; + this.$el.innerHTML);</span><br><span class="line">					console.log(&#39;data:&#39; + JSON.stringify(this.$data));</span><br><span class="line">					console.log(&#39;message:&#39; + this.message)</span><br><span class="line">					console.groupEnd(&#39;destroyed&#39;)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://yj.paopao.asia/2020-04-04_15-47-40.png" alt=""></p>
-<p><img src="http://yj.paopao.asia/2020-04-04_15-49-08.png" alt=""></p>
-
+          <p>Vue生命周期</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/04/Vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
